@@ -1,0 +1,19 @@
+{
+    "name": "bohrsty/tributum",
+    "license": "MIT",
+    "type": "project",
+    "version": "0.0.1",
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "require": {
+        "php": "7.*",
+        "phpoffice/phpexcel": "1.8.*",
+        "spipu/html2pdf": "4.6.*",
+        "smarty/smarty": "3.1.*",
+	"components/jquery": "3.1.*",
+	"twbs/bootstrap": "3.3.*"
+    }
+}
