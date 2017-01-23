@@ -1,0 +1,17 @@
+{
+	"name": "tributum",
+	"version": "0.0.1",
+	"license": "MIT",
+	"scripts": {
+		"build": "./node_modules/grunt/bin/grunt"
+	},
+	"devDependencies": {
+		"grunt": "1.*",
+		"grunt-contrib-clean": "1.*",
+		"grunt-contrib-concat": "1.*",
+		"grunt-contrib-uglify": "2.*",
+		"grunt-contrib-cssmin": "1.*",
+		"grunt-contrib-imagemin": "1.*",
+		"grunt-contrib-copy": "1.*"
+	}
+}

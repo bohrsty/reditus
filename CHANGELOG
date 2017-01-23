@@ -23,3 +23,5 @@ file that was distributed with this source code.
   0.0.1:
 -----------------------------------------------------------------------------------------
 [++] start of project, composer.json, license and changelog
+--
+[++] added gruntJS to handle assets; prepared first classes and index files
