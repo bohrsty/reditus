@@ -9,8 +9,8 @@
  * file that was distributed with this source code.
  */
  
-use Controller\MainController;
-use Exceptions\ExceptionHandler;
+use Tributum\Controller\MainController;
+use Tributum\ExceptionHandler;
 
 // require autoloader
 require_once(__DIR__.'/../vendor/autoload.php');
@@ -20,7 +20,7 @@ try {
 	
 	$app = new MainController();
 	$app-> run();
-} catch(\Exception $e) {
+} catch(\Throwable $e) {
 	
 	$handler = new ExceptionHandler();
 	$handler->handle($e);

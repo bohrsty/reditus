@@ -25,3 +25,9 @@ file that was distributed with this source code.
 [++] start of project, composer.json, license and changelog
 --
 [++] added gruntJS to handle assets; prepared first classes and index files
+--
+[cc] moved sources into namespace Tributum
+[++] added controller, request and response handling
+[++] added exceptions and exception handling
+[++] added service interface and parent service class
+[++] added Help service and the documentation of services
