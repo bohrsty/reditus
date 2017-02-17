@@ -32,7 +32,7 @@ class HttpRequest {
 	public function getServer($field = null) {
 		
 		// check $field
-		if(is_null($field) || !isset($this->server[$field])) {
+		if($field === null || !isset($this->server[$field])) {
 			return $this->server;
 		} else {
 			return $this->server[$field];
@@ -75,7 +75,7 @@ class HttpRequest {
 		if(isset($_POST['data'])) {
 			$data = json_decode($_POST['data'], true);
 			// check if data was valid JSON
-			if(!is_null($data)) {
+			if($data !== null) {
 				$this->setData($data);
 			} else {
 				

@@ -31,3 +31,8 @@ file that was distributed with this source code.
 [++] added exceptions and exception handling
 [++] added service interface and parent service class
 [++] added Help service and the documentation of services
+--
+[++] added Session service and its dokumentation
+[++] added Session::init() and the session handling with cookie and database
+[++] added session cleanup
+[cc] removed is_null() calls, using === null instead

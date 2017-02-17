@@ -38,7 +38,7 @@ class MainController extends Controller {
 		$request = new HttpRequest();
 		
 		// check requesting /
-		if(is_null($request->getService())) {
+		if($request->getService() === null) {
 			
 			// prepare help
 			$serviceName = 'Tributum\\Service\\'.ucfirst($request->getVersion()).'\\Help';

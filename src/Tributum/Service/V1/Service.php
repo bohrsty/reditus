@@ -11,7 +11,8 @@
 
 namespace Tributum\Service\V1;
 
-namespace Tributum\Service\V1;
+use Tributum\Exceptions\MethodNotFoundException;
+use Tributum\Exceptions\ServiceNotFoundException;
 
 class Service implements ServiceInterface {
 		
@@ -19,6 +20,7 @@ class Service implements ServiceInterface {
 	 * class variables
 	 */
 	private $data;
+	private $apiArray;
 	
 	
 	/*
@@ -30,6 +32,12 @@ class Service implements ServiceInterface {
 	public function setData(Array $data) {
 		$this->data = $data;
 	}
+	public function getApiArray() {
+		return $this->apiArray;
+	}
+	public function setApiArray(Array $apiArray) {
+		$this->apiArray = $apiArray;
+	}
 	
 	
 	/**
@@ -40,6 +48,32 @@ class Service implements ServiceInterface {
 		
 		// set class variables
 		$this->setData($data);
+		
+		//  check data
+		if($data === null || empty($data)) {
+			
+			// default method
+			$this->defaultMethod();
+		} else {
+			
+			// call user function
+			if(method_exists($this, $data['method']) === true) {
+				if(call_user_func_array(array($this, $data['method']), $data['params']) === false) {
+					throw new MethodFailedException('The execution of the method "'.$data['method'].'" failed.');
+				}
+			} else {
+				throw new MethodNotFoundException('The method "'.$data['method'].'" does not exists in service "'.substr(strrchr(get_class($this), '\\'), 1).'" in version v1.');
+			}
+		}
+	}
+	
+	
+	/**
+	 * default method called if no valid POST data is provided
+	 * @return void
+	 */
+	public function defaultMethod() {
+		
 	}
 	
 	
@@ -52,6 +86,7 @@ class Service implements ServiceInterface {
 		// defined services
 		return array(
 			'Help',
+			'Session',
 		);
 	}
 	

@@ -13,26 +13,17 @@ namespace Tributum\Service\V1;
 
 use Tributum\Service\V1\Service;
 use Tributum\Exceptions\MethodFailedException;
-use Tributum\Exceptions\MethodNotFoundException;
-use Tributum\Exceptions\ServiceNotFoundException;
 
 class Help extends Service implements ServiceInterface {
 		
 	/*
 	 * class variables
 	 */
-	private $helpArray;
 	
 	
 	/*
 	 * getter/setter
 	 */
-	public function getHelpArray() {
-		return $this->helpArray;
-	}
-	public function setHelpArray(Array $helpArray) {
-		$this->helpArray = $helpArray;
-	}
 	
 	
 	/**
@@ -43,23 +34,17 @@ class Help extends Service implements ServiceInterface {
 		
 		// parent constructor
 		parent::__construct($data);
+	}
+	
+	
+	/**
+	 * default method called if no valid POST data is provided
+	 * @return void
+	 */
+	public function defaultMethod() {
 		
-		//  check data
-		if(is_null($data) || empty($data)) {
-			
-			// main help
-			$this->mainHelp();
-		} else {
-			
-			// call user function
-			if(method_exists($this, $data['method']) === true) {
-				if(call_user_func_array(array($this, $data['method']), $data['params']) === false) {
-					throw new MethodFailedException('The execution of the method "'.$data['method'].'" failed.');
-				}
-			} else {
-				throw new MethodNotFoundException('The method "'.$data['method'].'" does not exists in service "'.substr(strrchr(get_class($this), '\\'), 1).'" in version v1.');
-			}
-		}
+		// main help
+		$this->mainHelp();
 	}
 	
 	
@@ -103,7 +88,7 @@ class Help extends Service implements ServiceInterface {
 			'status' => 'OK',
 			'data' => array(
 				'statusCode' => $this->getStatusCode(),
-				'docs' => $this->getHelpArray(),
+				'docs' => $this->getApiArray(),
 			),
 		);
 	}
@@ -114,18 +99,23 @@ class Help extends Service implements ServiceInterface {
 	 */
 	private function mainHelp() {
 		
-		// prepare json
-		$json = array(
+		// prepare help json
+		$helpJson = array(
 			'method' => 'getHelp',
 			'params' => array('<Service>',),
 		);
+		// prepare post json for calling methods
+		$postJson = array(
+			'method' => '<methodName>',
+			'params' => array('[<param1>[, <param2>[, ...]]]',),
+		);
 		// prepare help
-		$this->setHelpArray(array(
+		$this->setApiArray(array(
 			'services' => Service::helpGetServices(),
 			'info' => 
-				'For available services see "services" key, to get help per service send '
-				.json_encode($json).' as POST key "data" to "/v1/Help/", where <Service> '
-				.'is one the service names from the "services" key.',
+				'For available services see "services" key, to get help per service send '.json_encode($helpJson).' as POST key "data" to "/v1/Help/", where <Service> is one the service names from the "services" key.'.PHP_EOL
+				.'To call a method send POST key "data" with '.json_encode($postJson).' to service URI, where "<methodName>" name of the method and "<paramX>" the parameter for the method.'.PHP_EOL
+				.'Service responses are available in key "data", with keys "statusCode" for HTTP status code and "response" containing the data returned by service method.',
 		));
 	}
 	
@@ -134,12 +124,12 @@ class Help extends Service implements ServiceInterface {
 	 * sets the response according to the topic given in $service
 	 * @param string $service the service name to request help
 	 */
-	private function getHelp(string $service) {
+	public function getHelp(string $service) {
 		
 		// check if $service exists
 		$serviceName = '\\Tributum\\Service\\V1\\'.ucfirst(strtolower($service));
 		if(class_exists($serviceName) === true) {
-			$this->setHelpArray($serviceName::getServiceDocs());
+			$this->setApiArray($serviceName::getServiceDocs());
 		} else {
 			throw new ServiceNotFoundException('Service "'.$service.'" does not exists in version "v1"');
 		}

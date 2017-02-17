@@ -14,6 +14,11 @@ namespace Tributum\Service\V1;
 interface ServiceInterface {
 	
 	/**
+	 * default method called if no valid POST data is provided
+	 */
+	public function defaultMethod();
+	
+	/**
 	 * provide documentation information for the service
 	 */
 	public static function getServiceDocs();
