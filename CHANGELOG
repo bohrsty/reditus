@@ -1,5 +1,5 @@
 -----------------------------------------------------------------------------------------
-This file is part of the Tributum package.
+This file is part of the Reditus package.
 
 (c) Nils Bohrs
 
@@ -40,3 +40,5 @@ file that was distributed with this source code.
 [cc] changed from jquery and gruntjs to webpack and reactjs
 --
 [++] added css optimization using optimize-css-assets-webpack-plugin
+--
+[cc] renamed project and namespace to Reditus

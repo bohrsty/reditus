@@ -1,5 +1,5 @@
 /*
- * This file is part of the Tributum project.
+ * This file is part of the Reditus project.
  *
  * (c) Nils Bohrs
  *

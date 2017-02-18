@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Tributum project.
+ * This file is part of the Reditus project.
  *
  * (c) Nils Bohrs
  *
@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Tributum\Service\V1;
+namespace Reditus\Service\V1;
 
-use Tributum\Service\V1\Service;
-use Tributum\Exceptions\MethodFailedException;
+use Reditus\Service\V1\Service;
+use Reditus\Exceptions\MethodFailedException;
 
 class Help extends Service implements ServiceInterface {
 		
@@ -127,7 +127,7 @@ class Help extends Service implements ServiceInterface {
 	public function getHelp(string $service) {
 		
 		// check if $service exists
-		$serviceName = '\\Tributum\\Service\\V1\\'.ucfirst(strtolower($service));
+		$serviceName = '\\Reditus\\Service\\V1\\'.ucfirst(strtolower($service));
 		if(class_exists($serviceName) === true) {
 			$this->setApiArray($serviceName::getServiceDocs());
 		} else {

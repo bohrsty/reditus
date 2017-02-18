@@ -13,10 +13,10 @@ module.exports = {
 	output: {
 		path: __dirname + "/web/",
 		publicPath: "/",
-		filename: "tributum.js"
+		filename: "reditus.js"
 	},
 	plugins: [
-		new ExtractTextPlugin('tributum.css'),
+		new ExtractTextPlugin('reditus.css'),
 		new webpack.optimize.UglifyJsPlugin({
 			compress: {
 				warnings: false

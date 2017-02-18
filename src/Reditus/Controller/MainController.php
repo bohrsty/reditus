@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Tributum project.
+ * This file is part of the Reditus project.
  *
  * (c) Nils Bohrs
  *
@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Tributum\Controller;
+namespace Reditus\Controller;
 
-use Tributum\Controller;
-use Tributum\HttpRequest;
-use Tributum\Exceptions\ServiceNotFoundException;
-use Tributum\HttpResponse;
+use Reditus\Controller;
+use Reditus\HttpRequest;
+use Reditus\Exceptions\ServiceNotFoundException;
+use Reditus\HttpResponse;
 
 class MainController extends Controller {
 	
@@ -41,11 +41,11 @@ class MainController extends Controller {
 		if($request->getService() === null) {
 			
 			// prepare help
-			$serviceName = 'Tributum\\Service\\'.ucfirst($request->getVersion()).'\\Help';
+			$serviceName = 'Reditus\\Service\\'.ucfirst($request->getVersion()).'\\Help';
 		} else {
 			
 			// prepare service
-			$serviceName = 'Tributum\\Service\\'.ucfirst($request->getVersion()).'\\'.$request->getService();
+			$serviceName = 'Reditus\\Service\\'.ucfirst($request->getVersion()).'\\'.$request->getService();
 		}
 		
 		// check service

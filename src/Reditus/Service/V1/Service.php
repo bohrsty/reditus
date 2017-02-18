@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Tributum project.
+ * This file is part of the Reditus project.
  *
  * (c) Nils Bohrs
  *
@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Tributum\Service\V1;
+namespace Reditus\Service\V1;
 
-use Tributum\Exceptions\MethodNotFoundException;
-use Tributum\Exceptions\ServiceNotFoundException;
+use Reditus\Exceptions\MethodNotFoundException;
+use Reditus\Exceptions\ServiceNotFoundException;
 
 class Service implements ServiceInterface {
 		

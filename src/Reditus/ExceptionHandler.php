@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Tributum project.
+ * This file is part of the Reditus project.
  *
  * (c) Nils Bohrs
  *
@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Tributum;
+namespace Reditus;
 
-use Tributum\Exceptions;
-use Tributum\HttpResponse;
+use Reditus\Exceptions;
+use Reditus\HttpResponse;
 
 class ExceptionHandler {
 	
@@ -76,7 +76,7 @@ class ExceptionHandler {
 		}
 		
 		// check if custom "Exceptions", or other Throwable
-		if(is_a($e, 'Tributum\\Exceptions') === true) {
+		if(is_a($e, 'Reditus\\Exceptions') === true) {
 			
 			// get exception response array
 			$json = $e->__toArray();

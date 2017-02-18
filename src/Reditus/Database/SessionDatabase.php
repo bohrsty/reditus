@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Tributum project.
+ * This file is part of the Reditus project.
  *
  * (c) Nils Bohrs
  *
@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
  
-namespace Tributum\Database;
+namespace Reditus\Database;
 
-use Tributum\Database;
-use Tributum\Exceptions\SessionDatabaseCopyFailedException;
+use Reditus\Database;
+use Reditus\Exceptions\SessionDatabaseCopyFailedException;
 
 class SessionDatabase extends Database {
 	

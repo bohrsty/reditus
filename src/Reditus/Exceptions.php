@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Tributum project.
+ * This file is part of the Reditus project.
  *
  * (c) Nils Bohrs
  *
@@ -9,11 +9,24 @@
  * file that was distributed with this source code.
  */
 
-namespace Tributum\Exceptions;
+namespace Reditus;
 
-use Tributum\Exceptions;
-
-class MethodNotFoundException extends Exceptions {
+class Exceptions extends \Exception {
+	
+	/*
+	 * class variables
+	 */
+	private $statusCode;
+	
+	/*
+	 * getter/setter
+	 */
+	public function getStatusCode() {
+		return $this->statusCode;
+	}
+	public function setStatusCode(int $statusCode) {
+		$this->statusCode = $statusCode;
+	}
 	
 	/**
 	 * constructor
@@ -24,8 +37,8 @@ class MethodNotFoundException extends Exceptions {
 		// parent constructor
 		parent::__construct($message);
 		
-		// set status code
-		$this->setStatusCode(404);
+		// initially set class variables
+		$this->setStatusCode(200);
 	}
 	
 	/**
@@ -39,9 +52,9 @@ class MethodNotFoundException extends Exceptions {
 		return array(
 			'status' => 'ERROR',
 			'data' => array(
-				'statusCode' => $this->getStatusCode(),
-				'exception' => get_class($this),
-				'message' => $this->getMessage(),
+				'statusCode' => 0,
+				'exception' => '',
+				'message' => '',
 			),
 		);
 	}

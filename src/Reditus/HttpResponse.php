@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Tributum project.
+ * This file is part of the Reditus project.
  *
  * (c) Nils Bohrs
  *
@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
  
-namespace Tributum;
+namespace Reditus;
 
-use Tributum\Exceptions\JsonNotParsableException;
+use Reditus\Exceptions\JsonNotParsableException;
 
 class HttpResponse {
 	

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Tributum project.
+ * This file is part of the Reditus project.
  *
  * (c) Nils Bohrs
  *
@@ -9,24 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Tributum;
+namespace Reditus\Exceptions;
 
-class Exceptions extends \Exception {
-	
-	/*
-	 * class variables
-	 */
-	private $statusCode;
-	
-	/*
-	 * getter/setter
-	 */
-	public function getStatusCode() {
-		return $this->statusCode;
-	}
-	public function setStatusCode(int $statusCode) {
-		$this->statusCode = $statusCode;
-	}
+use Reditus\Exceptions;
+
+class JsonNotParsableException extends Exceptions {
 	
 	/**
 	 * constructor
@@ -37,8 +24,8 @@ class Exceptions extends \Exception {
 		// parent constructor
 		parent::__construct($message);
 		
-		// initially set class variables
-		$this->setStatusCode(200);
+		// set status code
+		$this->setStatusCode(500);
 	}
 	
 	/**
@@ -52,9 +39,9 @@ class Exceptions extends \Exception {
 		return array(
 			'status' => 'ERROR',
 			'data' => array(
-				'statusCode' => 0,
-				'exception' => '',
-				'message' => '',
+				'statusCode' => $this->getStatusCode(),
+				'exception' => get_class($this),
+				'message' => $this->getMessage(),
 			),
 		);
 	}

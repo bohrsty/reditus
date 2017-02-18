@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Tributum project.
+ * This file is part of the Reditus project.
  *
  * (c) Nils Bohrs
  *
@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Tributum\Exceptions;
+namespace Reditus\Exceptions;
 
-use Tributum\Exceptions;
+use Reditus\Exceptions;
 
-class ServiceNotFoundException extends Exceptions {
+class SessionCookieNotSetException extends Exceptions {
 	
 	/**
 	 * constructor
@@ -25,7 +25,7 @@ class ServiceNotFoundException extends Exceptions {
 		parent::__construct($message);
 		
 		// set status code
-		$this->setStatusCode(404);
+		$this->setStatusCode(500);
 	}
 	
 	/**

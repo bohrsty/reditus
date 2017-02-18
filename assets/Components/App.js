@@ -1,5 +1,5 @@
 /*
- * This file is part of the Tributum project.
+ * This file is part of the Reditus project.
  *
  * (c) Nils Bohrs
  *
@@ -120,7 +120,7 @@ class App extends Component {
 	render() {
 		
 		// set title
-		document.title = 'Tributum';
+		document.title = 'Reditus';
 				
 		return (
 			<div>

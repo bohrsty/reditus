@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Tributum project.
+ * This file is part of the Reditus project.
  *
  * (c) Nils Bohrs
  *
@@ -9,8 +9,8 @@
  * file that was distributed with this source code.
  */
  
-use Tributum\Controller\MainController;
-use Tributum\ExceptionHandler;
+use Reditus\Controller\MainController;
+use Reditus\ExceptionHandler;
 
 // require autoloader
 require_once(__DIR__.'/../vendor/autoload.php');

@@ -1,5 +1,5 @@
 /*
- * This file is part of the Tributum project.
+ * This file is part of the Reditus project.
  *
  * (c) Nils Bohrs
  *
@@ -39,7 +39,7 @@ export default class IndexPage extends Component {
 			case 'homePage':
 				return (
 					<Jumbotron className="center">
-						<h1>Tributum</h1>
+						<h1>Reditus</h1>
 					</Jumbotron>
 				);
 				break;
