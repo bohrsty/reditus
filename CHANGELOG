@@ -38,3 +38,5 @@ file that was distributed with this source code.
 [cc] removed is_null() calls, using === null instead
 --
 [cc] changed from jquery and gruntjs to webpack and reactjs
+--
+[++] added css optimization using optimize-css-assets-webpack-plugin

@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
 	resolve: {
@@ -20,6 +21,16 @@ module.exports = {
 			compress: {
 				warnings: false
 			}
+		}),
+		new OptimizeCssAssetsPlugin({
+			assetNameRegExp: /\.css$/,
+			cssProcessor: require('cssnano'),
+			cssProcessorOptions: {
+				discardComments: {
+					removeAll: true
+				}
+			},
+			canPrint: true
 		}),
 		new webpack.DefinePlugin({
 			'process.env':{
